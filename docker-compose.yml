@@ -1,0 +1,27 @@
+version: '3'
+services:
+  web:
+    # image: php:8.2-apache
+    build: .
+    volumes:
+      - "./:/var/www/html"
+    ports:
+      - 8080:80
+      #- 443:443
+  db:
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=openbook
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+    command: mysqld --sql_mode=""
+    volumes:
+      - "./db:/docker-entrypoint-initdb.d"
+  # admin:
+  #   image: phpmyadmin/phpmyadmin
+  #   ports:
+  #     - 8081:80
+  #   environment:
+  #     - PMA_HOTS=db
+  #     - PMA_PORT=3306
