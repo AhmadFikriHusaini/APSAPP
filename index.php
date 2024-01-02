@@ -58,7 +58,6 @@
             <?php
             if (isset($_POST['submit']) && $_POST['key'] != '') {
                 $key = '%' . $_POST['key'] . '%';
-
                 $query = 'SELECT * FROM buku, kategori WHERE buku.Id_kategori = kategori.id_kategori AND (buku.Judul LIKE :judul OR buku.Penulis LIKE :penulis OR buku.Penerbit LIKE :penerbit OR buku.Tahun_terbit LIKE :terbit OR kategori.nama_kategori LIKE :kategori);';
                 $search = $koneksi->prepare($query);
                 $search->bindParam(':judul', $key);
@@ -106,7 +105,7 @@
                 </div>
             </div>
             <?php }; 
-        } else if(isset($_POST['submit']) && $_POST['key'] == '') { echo "<script>window.location='index.php';</script>"; } else { ?>
+            } else if(isset($_POST['submit']) && $_POST['key'] == '') { echo "<script>window.location='index.php';</script>"; } else { ?>
             <?php 
 
             $query = $koneksi->prepare('SELECT * FROM buku, kategori Where buku.Id_kategori = kategori.id_kategori GROUP BY kategori.id_kategori;');
@@ -114,7 +113,7 @@
             $kate = $query->fetchAll();
             foreach ($kate as $k) {
         
-        ?>
+            ?>
             <div class="container-fluid px-4">
                 <div class="row">
                     <div class="col mt-3">

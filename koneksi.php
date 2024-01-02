@@ -1,8 +1,8 @@
 <?php
-$user = "root";
-$pass = "";
+$user = "admin";
+$pass = "admin";
 try {
-    $koneksi = new PDO('mysql:host=localhost;dbname=openbook_trial2', $user, $pass);
+    $koneksi = new PDO('mysql:host=db;dbname=openbook', $user, $pass);
     $koneksi->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $th) {
     die("koneksi gagal" . $th->getMessage());
