@@ -3,10 +3,13 @@ services:
   web:
     # image: php:8.2-apache
     build: .
-    volumes:
-      - "./:/var/www/html"
+    develop:
+      watch:
+        - action: sync
+          path: ./
+          target: /var/www/html/app_perpus
     ports:
-      - 8080:80
+      - 80:80
       #- 443:443
   db:
     image: mysql:latest
@@ -18,10 +21,10 @@ services:
     command: mysqld --sql_mode=""
     volumes:
       - "./db:/docker-entrypoint-initdb.d"
-  # admin:
-  #   image: phpmyadmin/phpmyadmin
-  #   ports:
-  #     - 8081:80
-  #   environment:
-  #     - PMA_HOTS=db
-  #     - PMA_PORT=3306
+  admin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8081:80
+    environment:
+      - PMA_HOTS=db
+      - PMA_PORT=3306

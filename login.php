@@ -58,11 +58,7 @@ switch ($randoperator) {
                         <!-- Nested Row within Card Body -->
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Selamat Datang!
-                                    <?php if (!empty($_COOKIE['username'])) {
-                                                echo "cookie " . $_COOKIE['username'];
-                                            }; ?>
-                                </h1>
+                                <h1 class="h4 text-gray-900 mb-4">Selamat Datang!</h1>
                             </div>
                             <form class="user" method="post" action="proses.php">
                                 <div class="form-group">
